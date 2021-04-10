@@ -15,3 +15,15 @@ def second(request):
 
 def third(request):
     return HttpResponse("This is page test3")
+
+
+def test4(request):
+    return render(request, "added.html")
+
+
+def test5(request):
+    return render(request, "changed.html")
+
+
+def test6(request):
+    return render(request, "deleted.html")
