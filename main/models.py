@@ -6,3 +6,6 @@ class ToDo(models.Model):
     is_closed = models.BooleanField(default=False)
     is_favorite = models.BooleanField(default=False)
 
+
+
+
