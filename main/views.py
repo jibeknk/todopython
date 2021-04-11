@@ -1,5 +1,8 @@
 from django.shortcuts import render, HttpResponse
 from .models import ToDo
+from .models import Book
+
+
 
 
 def homepage(request):
@@ -29,3 +32,8 @@ def test5(request):
 
 def test6(request):
     return render(request, "deleted.html")
+    
+
+def books(request):
+    book_date = Book.objects.all()
+    return render(request, "books.html", {"book_date": book_date})
