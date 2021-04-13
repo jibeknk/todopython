@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 from .models import ToDo
 from .models import Book
 
@@ -37,3 +37,11 @@ def test6(request):
 def books(request):
     book_date = Book.objects.all()
     return render(request, "books.html", {"book_date": book_date})
+
+
+def add_todo(request):
+    form = request.POST
+    text = form["todo_text"]
+    todo = ToDo(text=text)
+    todo.save()
+    return redirect(test)
