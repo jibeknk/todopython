@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
                 ('genre', models.CharField(max_length=100)),
                 ('author', models.CharField(max_length=100)),
                 ('year', models.CharField(max_length=100)),
-                ('created_at', models.DateField(auto_now_add=True)),
+                ('created_at', models.DateTimeField(auto_now_add=True)),
             ],
         ),
     ]

@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,12 +6,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{% static 'styles_book/index.css' %}" />
 </head>
 <body>
-    {% for book in book_date %}
-        <h3>{{ book.title }} - {{ book.created_at }}</h3>
-        <h3>{{ book.author }}</h3>
-        <h3>{{ book.price }}</h3>
-    {% endfor %}
+    <section>
+        <div class="create_container">
+            <form action="{% url 'add-book' %}" method="POST">
+                {% csrf_token %}
+                <input class="create_input" type="text" placeholder="Напишите сюда название новой книги" name="book_title">
+                <button class="create_button">Добавить</button>
+            </form>
+        </div>
+        <div class="book_container">
+          
+        {% for book in book_date %}
+        <div class="book_item">
+            <h3>{{ book.title }}</h3>
+            <h3>{{ book.subtitle }}</h3>
+            <h3>{{ book.description }}</h3>
+            <h3>{{ book.price }}</h3>
+            <h3>{{ book.genre }}</h3>
+            <h3>{{ book.author }}</h3>
+            <h3>{{ book.year }}</h3>
+            <h3>{{ book.created_at }}</h3>
+        </div>       
+        {% endfor %}
+    </section>   
 </body>
 </html>

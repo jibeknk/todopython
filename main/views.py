@@ -45,3 +45,11 @@ def add_todo(request):
     todo = ToDo(text=text)
     todo.save()
     return redirect(test)
+
+
+def add_book(request):
+    form = request.POST
+    title = form["book_title"]
+    book = Book(title = title)
+    book.save()
+    return redirect(books)
