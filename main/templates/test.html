@@ -8,7 +8,7 @@
     <title>Todo</title>
     <!-- <link rel="stylesheet" href="./styles/index.css" /> -->
     <link rel="stylesheet" href="{% static 'styles/index.css' %}" />
-    <!-- <link rel="stylesheet", href="./styles/checkbox.css" /> -->
+    <!-- <link rel="stylesheet" href="./styles/checkbox.css" /> -->
     <link rel="stylesheet", href="{% static 'styles/checkbox.css' %}" />
 </head>
 <body>
@@ -35,7 +35,7 @@
                     <p>{{ todo.created_at }}</p>
                     <div class="action_button">
                         <img src="{% static './icons/unmarked.png' %}">
-                        <img src="{% static './icons/delete.png' %}">
+                       <a href="{% url 'delete-todo' todo.id %}"><img src="{% static './icons/delete.png' %}"></a> 
                     </div>
                 </div> 
             </div> 
