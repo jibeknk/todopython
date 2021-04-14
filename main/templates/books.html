@@ -19,18 +19,36 @@
         </div>
         <div class="book_container">
           
-        {% for book in book_date %}
-        <div class="book_item">
-            <h3>{{ book.title }}</h3>
-            <h3>{{ book.subtitle }}</h3>
-            <h3>{{ book.description }}</h3>
-            <h3>{{ book.price }}</h3>
-            <h3>{{ book.genre }}</h3>
-            <h3>{{ book.author }}</h3>
-            <h3>{{ book.year }}</h3>
-            <h3>{{ book.created_at }}</h3>
-        </div>       
+            {% for book in book_date %}
+            <div class="book_item
+                {% if book.is_favorite %}
+                    marked
+                {% endif %}
+            ">
+                <div class="book_item_header">
+                    <h3>{{ book.title }}</h3>
+                    <h3>{{ book.subtitle }}</h3>
+                    <h3>{{ book.description }}</h3>
+                    <h3>{{ book.price }}</h3>
+                    <h3>{{ book.genre }}</h3>
+                    <h3>{{ book.author }}</h3>
+                    <h3>{{ book.year }}</h3>   
+                </div>    
+                <div class="book_item_footer">
+                    <p>{{ book.created_at }}</p>
+                    <div class="action_button">
+                        {% if book.is_favorite %}
+                            <a href="{% url 'unmark-book' book.id %}"><img src="{% static './icons/marked.png' %}"></a>
+                        {% else %}
+                            <a href="{% url 'mark-book' book.id %}"><img src="{% static './icons/unmarked.png' %}"></a>
+                        {% endif %}
+
+                            <a href="{% url 'delete-book' book.id %}"><img src="{% static './icons/delete.png' %}"></a>       
+                    </div>  
+                </div>
+            </div>       
         {% endfor %}
+        </div>
     </section>   
 </body>
 </html>
