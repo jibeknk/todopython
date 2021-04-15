@@ -18,6 +18,7 @@ from django.urls import path
 from main.views import *
 from django.conf import settings
 from django.conf.urls.static import static
+from django.conf.urls import url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -37,5 +38,6 @@ urlpatterns = [
     path("delete-book/<id>/", delete_book, name="delete-book"),
     path("mark-book/<id>/", mark_book, name="mark-book"),
     path("unmark-book/<id>/", unmark_book, name="unmark-book"),
-]   + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) \
+    path("books_detail/<id>/", BooksDetail, name="books_detail"),
+    ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) \
     + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

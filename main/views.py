@@ -35,8 +35,8 @@ def test6(request):
     
 
 def books(request):
-    book_date = Book.objects.all()
-    return render(request, "books.html", {"book_date": book_date})
+    book_list = Book.objects.all()
+    return render(request, "books.html", {"book_list": book_list})
 
 
 def add_todo(request):
@@ -93,3 +93,9 @@ def unmark_book(request, id):
     book.is_favorite=False
     book.save()
     return redirect(books)
+
+
+def BooksDetail(request, id):
+    book = Book.objects.get(id=id)
+    book.save()
+    return redirect(books_detail)
